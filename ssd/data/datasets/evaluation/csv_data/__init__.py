@@ -276,6 +276,8 @@ def calc_detection_voc_prec_rec(
             print(pred_score_l)
             # sort by score
             order = pred_score_l.argsort()[::-1]
+            print("order")
+            print(order)
             pred_bbox_l = pred_bbox_l[order]
             pred_score_l = pred_score_l[order]
 
