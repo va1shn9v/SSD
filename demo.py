@@ -38,7 +38,7 @@ def run_demo(cfg, ckpt, score_threshold, images_dir, output_dir, dataset_type):
 
     # image_paths = glob.glob(os.path.join(images_dir, '*.jpg'))
     image_paths = []
-    for file in os.lisdir(images_dir):
+    for file in os.listdir(images_dir):
         if file.endswith(".jpg"):
             image_paths.append(os.path.join(images_dir,file))
     print("Image paths : {}".format(image_paths))
