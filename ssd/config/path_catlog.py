@@ -54,7 +54,7 @@ class DatasetCatalog:
         },
         'csv_dataset_train':{
             "train_file":"/Users/vaishnavp/Desktop/train.csv"
-        }
+        },
         'csv_dataset_test':{
             "train_file":"/Users/vaishnavp/Desktop/test.csv"
         },

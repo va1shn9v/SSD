@@ -15,7 +15,7 @@ MODEL:
 INPUT:
   IMAGE_SIZE: 320
 DATASETS:
-  TRAIN: ("csv_dataset")
+  TRAIN: ("csv_dataset",)
   # TEST: ("voc_2007_test", )
 SOLVER:
   MAX_ITER: 120000
