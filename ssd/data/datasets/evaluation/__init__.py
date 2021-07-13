@@ -21,7 +21,7 @@ def evaluate(dataset, predictions, output_dir, **kwargs):
     elif isinstance(dataset, COCODataset):
         return coco_evaluation(**args)
     elif isinstance(dataset,CSVDataset):
-        return csv_evaluation
+        return csv_evaluation(**args)
 
     else:
         raise NotImplementedError
