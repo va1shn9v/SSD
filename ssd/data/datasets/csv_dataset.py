@@ -8,6 +8,7 @@ import skimage.transform
 import skimage.color
 import skimage
 
+sys.path.insert(0,os.path.abspath("../../.."))
 from PIL import Image
 from ssd.structures.container import Container
 
@@ -82,8 +83,8 @@ class CSVDataset(Dataset):
 
         img = self.load_image(idx)
         annot,labels = self.load_annotations(idx)
-        print(annot.shape)
-        print(labels.shape)
+        # print(annot.shape)
+        # print(labels.shape)
         # sample = {'img': img, 'annot': annot}
 
         if self.transform:
@@ -91,9 +92,9 @@ class CSVDataset(Dataset):
         if self.target_transform:
             annot,labels = self.target_transform(annot,labels)
 
-        targets = (
-            annot,
-            labels,
+        targets = Container(
+            boxes=annot,
+            labels=labels,
         )
 
 
