@@ -25,7 +25,7 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
     for i in range(len(dataset)):
         annotation, labels = dataset.load_annotations(i)
         # gt_boxes, gt_labels, is_difficult = annotation
-        gt_boxes_list.append(annotations)
+        gt_boxes_list.append(annotation)
         gt_labels_list.append(labels)
         gt_difficults.append(None)
 
