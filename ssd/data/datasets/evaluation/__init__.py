@@ -1,4 +1,4 @@
-from ssd.data.datasets import VOCDataset, COCODataset
+from ssd.data.datasets import VOCDataset, COCODataset,CSVDataset
 from .coco import coco_evaluation
 from .voc import voc_evaluation
 
@@ -20,5 +20,8 @@ def evaluate(dataset, predictions, output_dir, **kwargs):
         return voc_evaluation(**args)
     elif isinstance(dataset, COCODataset):
         return coco_evaluation(**args)
+    elif isinstance(dataset,CSVDataset):
+        return csv_evaluation
+
     else:
         raise NotImplementedError
