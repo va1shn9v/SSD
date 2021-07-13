@@ -11,7 +11,7 @@ MODEL:
     MIN_SIZES: [60, 105, 150, 195, 240, 285]
     MAX_SIZES: [105, 150, 195, 240, 285, 330]
     ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
-    BOXES_PER_LOCATION: [1, 1, 1 ,1, 1, 1]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
 INPUT:
   IMAGE_SIZE: 320
 DATASETS:
