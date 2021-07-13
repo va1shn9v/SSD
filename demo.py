@@ -37,12 +37,14 @@ def run_demo(cfg, ckpt, score_threshold, images_dir, output_dir, dataset_type):
     print('Loaded weights from {}'.format(weight_file))
 
     image_paths = glob.glob(os.path.join(images_dir, '*.jpg'))
+    print("Image paths : {}".format(image_paths))
     mkdir(output_dir)
 
     cpu_device = torch.device("cpu")
     transforms = build_transforms(cfg, is_train=False)
     model.eval()
     for i, image_path in enumerate(image_paths):
+        print("Image No : {}".format(i))
         start = time.time()
         image_name = os.path.basename(image_path)
 
