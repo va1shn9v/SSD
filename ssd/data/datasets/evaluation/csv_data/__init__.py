@@ -31,6 +31,8 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
 
         # img_info = dataset.get_img_info(i)
         prediction = predictions[i]
+        print("Prediction")
+        print(prediction)
         # prediction = prediction.resize((img_info['width'], img_info['height'])).numpy()
         boxes, labels, scores = prediction['boxes'], prediction['labels'], prediction['scores']
 
@@ -268,6 +270,7 @@ def calc_detection_voc_prec_rec(
             pred_mask_l = pred_label == l
             pred_bbox_l = pred_bbox[pred_mask_l]
             pred_score_l = pred_score[pred_mask_l]
+            print("Pred_Score_L")
             # sort by score
             order = pred_score_l.argsort()[::-1]
             pred_bbox_l = pred_bbox_l[order]
