@@ -53,10 +53,10 @@ class DatasetCatalog:
             "ann_file": "annotations/instances_val2014.json"
         },
         'csv_dataset_train':{
-            "train_file":"/Users/vaishnavp/Desktop/train.csv"
+            "train_file":"/content/train.csv"
         },
         'csv_dataset_test':{
-            "train_file":"/Users/vaishnavp/Desktop/test.csv"
+            "train_file":"/content/test.csv"
         },
     }
 
@@ -89,5 +89,6 @@ class DatasetCatalog:
             args = dict(
              train_file = attrs["train_file"]
             )
+            return dict(factory="CSVDataset",args=args)
 
         raise RuntimeError("Dataset not available: {}".format(name))
