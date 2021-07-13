@@ -52,6 +52,12 @@ class DatasetCatalog:
             "data_dir": "val2014",
             "ann_file": "annotations/instances_val2014.json"
         },
+        'csv_dataset_train':{
+            "train_file":"/Users/vaishnavp/Desktop/train.csv"
+        }
+        'csv_dataset_test':{
+            "train_file":"/Users/vaishnavp/Desktop/test.csv"
+        },
     }
 
     @staticmethod
@@ -78,5 +84,10 @@ class DatasetCatalog:
                 ann_file=os.path.join(coco_root, attrs["ann_file"]),
             )
             return dict(factory="COCODataset", args=args)
+        elif "csv" in name:
+            attrs = DatasetCatalog.DATASETS[name]
+            args = dict(
+             train_file = attrs["train_file"]
+            )
 
         raise RuntimeError("Dataset not available: {}".format(name))
