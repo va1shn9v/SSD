@@ -45,6 +45,8 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
         sc = scores > 0.3
         sc_total = sc.sum()
         boxes = boxes[sc]
+        labels = labels[sc]
+        scores = scores[sc]
         print("Prediction")
         print(boxes.shape)
         print("Greater than scores : {} , and gt obs : {}".format(sc_total,annotation.shape))
