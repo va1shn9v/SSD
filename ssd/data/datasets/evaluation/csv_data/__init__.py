@@ -24,7 +24,7 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
 
     for i in range(len(dataset)):
         annotation, labels = dataset.load_annotations(i)
-        img_width,img,height = dataset.get_img_size(i)
+        img_width,img,height = dataset.get_image_size(i)
         print("Image shape is :{}, {}".format(img_width,img_height))
         # gt_boxes, gt_labels, is_difficult = annotation
         gt_boxes_list.append(annotation)
