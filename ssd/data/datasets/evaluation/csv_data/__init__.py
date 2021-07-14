@@ -42,7 +42,7 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
         prediction = prediction.resize((img_width, img_height)).numpy()
         boxes, labels, scores = prediction['boxes'], prediction['labels'], prediction['scores']
         image_to_box[str(img_name)] = len(boxes)
-        sc = scores > 0.5
+        sc = scores > 0.3
         sc_total = sc.sum()
         print("Greater than scores : {} , and gt obs : {}".format(sc_total,annotation.shape))
 
