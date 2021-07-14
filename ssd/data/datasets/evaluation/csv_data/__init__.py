@@ -307,6 +307,8 @@ def calc_detection_voc_prec_rec(
                 continue
 
             # VOC evaluation follows integer typed bounding boxes.
+            print("pred_bbox_l")
+            print(pred_bbox_l.shape)
             pred_bbox_l = pred_bbox_l.copy()
             pred_bbox_l[:, 2:] += 1
             gt_bbox_l = gt_bbox_l.copy()
