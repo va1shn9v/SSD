@@ -352,6 +352,7 @@ def calc_detection_voc_prec_rec(
         tp = np.cumsum(match_l == 1)
         fp = np.cumsum(match_l == 0)
         print("Total objects in : {}".format(tp+fp))
+        print(type(tp))
         # If an element of fp + tp is 0,
         # the corresponding element of prec[l] is nan.
         prec[l] = tp / (fp + tp)
