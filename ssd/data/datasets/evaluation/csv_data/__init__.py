@@ -339,6 +339,7 @@ def calc_detection_voc_prec_rec(
             raise ValueError('Length of input iterables need to be same.')
 
     n_fg_class = max(n_pos.keys()) + 1
+    print("n_fg_class",n_fg_class)
     prec = [None] * n_fg_class
     rec = [None] * n_fg_class
 
@@ -346,15 +347,20 @@ def calc_detection_voc_prec_rec(
         score_l = np.array(score[l])
         match_l = np.array(match[l], dtype=np.int8)
 
+
         order = score_l.argsort()[::-1]
         match_l = match_l[order]
+        print("Match_L")
+        print(match_l.shape)
 
         tp = np.cumsum(match_l == 1)
         fp = np.cumsum(match_l == 0)
         print("Total objects in : {}".format(tp+fp))
         print(type(tp))
         print("TP : {}".format(tp))
+        print(tp.shape)
         print("FP : {}".format(fp))
+        print(fp.shape)
         # If an element of fp + tp is 0,
         # the corresponding element of prec[l] is nan.
         prec[l] = tp / (fp + tp)
