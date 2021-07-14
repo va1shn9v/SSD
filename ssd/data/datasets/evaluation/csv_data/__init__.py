@@ -51,7 +51,9 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
                                 iou_thresh=0.5,
                                 use_07_metric=True)
     logger = logging.getLogger("SSD.inference")
-    result_str = "mAP: {:.4f}\n presicion : {:.4f}\n recall : {:.4f}\n".format(result["map"],result["presicion"],result["recall"])
+    result_str = "mAP: {:.4f}\n".format(result["map"])
+    print(result["presicion"])
+    print(result["recall"])
     metrics = {'mAP': result["map"]}
     for i, ap in enumerate(result["ap"]):
         if i == 0:  # skip background
