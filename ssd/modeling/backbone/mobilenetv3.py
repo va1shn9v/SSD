@@ -196,6 +196,8 @@ class MobileNetV3(nn.Module):
         for i in range(len(self.extras)):
             x = self.extras[i](x)
             features.append(x)
+        print("Features")
+        print(features)
 
         return tuple(features)
 
