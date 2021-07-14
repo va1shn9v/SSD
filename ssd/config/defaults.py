@@ -32,7 +32,8 @@ _C.MODEL.PRIORS.MAX_SIZES = [60, 111, 162, 213, 264, 315]
 _C.MODEL.PRIORS.ASPECT_RATIOS = [[2], [2, 3], [2, 3], [2, 3], [2], [2]]
 # When has 1 aspect ratio, every location has 4 boxes, 2 ratio 6 boxes.
 # #boxes = 2 + #ratio * 2
-_C.MODEL.PRIORS.BOXES_PER_LOCATION = [4, 6, 6, 6, 4, 4]  # number of boxes per feature map location
+_C.MODEL.PRIORS.BOXES_PER_LOCATION = [1, 1, 1, 1, 1, 1] 
+# _C.MODEL.PRIORS.BOXES_PER_LOCATION = [4, 6, 6, 6, 4, 4] # number of boxes per feature map location
 _C.MODEL.PRIORS.CLIP = True
 
 # -----------------------------------------------------------------------------
