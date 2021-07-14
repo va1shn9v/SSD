@@ -73,7 +73,7 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
     with open(result_path, "w") as f:
         f.write(result_str)
     with open("image2products.json","w") as j:
-        json.dumps(image_to_box,j)
+        json.dump(image_to_box,j)
 
 
     return dict(metrics=metrics)
