@@ -275,7 +275,7 @@ def calc_detection_voc_prec_rec(
             print("Pred_Score_L")
             print(pred_score_l)
             # sort by score
-            order = torch.flip(pred_score_l.argsort(),(0,1))
+            order = torch.flip(pred_score_l.argsort(),(0,))
             print("order")
             print(order)
             pred_bbox_l = pred_bbox_l[order]
