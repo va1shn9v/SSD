@@ -44,9 +44,9 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
         image_to_box[str(img_name)] = len(boxes)
         sc = scores > 0.3
         sc_total = sc.sum()
-        # prediction = prediction[sc]
+        boxes = boxes[sc]
         print("Prediction")
-        print(prediction.shape)
+        print(boxes.shape)
         print("Greater than scores : {} , and gt obs : {}".format(sc_total,annotation.shape))
 
         pred_boxes_list.append(boxes)
