@@ -197,6 +197,9 @@ class CSVDataset(Dataset):
     def get_image_size(self,image_index):
         image = Image.open(self.image_names[image_index])
         return (image.width,image.height)
+    def get_image_name(self,image_index):
+        image_name = self.image_names[image_index]
+        return image_name
 
 if __name__ == "__main__":
     cdata = CSVDataset("/Users/vaishnavp/Desktop/train.csv")

@@ -8,6 +8,7 @@ import logging
 import os
 from datetime import datetime
 import torch
+import json
 
 
 
@@ -20,11 +21,13 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
     gt_boxes_list = []
     gt_labels_list = []
     gt_difficults = []
+    image_to_box = {}
 
 
     for i in range(len(dataset)):
         annotation, labels = dataset.load_annotations(i)
         img_width,img_height = dataset.get_image_size(i)
+        img_name = datset.get_image_name(i)
         print("Image shape is :{}, {}".format(img_width,img_height))
         # gt_boxes, gt_labels, is_difficult = annotation
         gt_boxes_list.append(annotation)
@@ -38,6 +41,7 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
 
         prediction = prediction.resize((img_width, img_height)).numpy()
         boxes, labels, scores = prediction['boxes'], prediction['labels'], prediction['scores']
+        image_to_box[str(img_name)] = len(boxes)
 
         pred_boxes_list.append(boxes)
         pred_labels_list.append(labels)
@@ -68,6 +72,9 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
         result_path = os.path.join(output_dir, 'result_{}.txt'.format(datetime.now().strftime('%Y-%m-%d_%H-%M-%S')))
     with open(result_path, "w") as f:
         f.write(result_str)
+    with open("image2products.json","w") as j:
+        json.dumps(image_to_box,j)
+
 
     return dict(metrics=metrics)
 
