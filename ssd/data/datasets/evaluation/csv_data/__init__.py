@@ -7,7 +7,7 @@ import six
 import logging
 import os
 from datetime import datetime
-
+import torch
 
 
 
@@ -270,12 +270,12 @@ def calc_detection_voc_prec_rec(
             pred_mask_l = pred_label == l
             pred_bbox_l = pred_bbox[pred_mask_l]
             pred_score_l = pred_score[pred_mask_l]
-            pred_score_l = pred_score_l.detach().numpy()
+            pred_score_l = pred_score_l
 
             print("Pred_Score_L")
             print(pred_score_l)
             # sort by score
-            order = pred_score_l.argsort()[::-1]
+            order = torch.flip(pred_score_l.argsort(),(0,1))
             print("order")
             print(order)
             pred_bbox_l = pred_bbox_l[order]
