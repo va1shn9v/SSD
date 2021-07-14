@@ -413,4 +413,4 @@ def calc_detection_voc_ap(prec, rec, use_07_metric=False):
             # and sum (\Delta recall) * prec
             ap[l] = np.sum((mrec[i + 1] - mrec[i]) * mpre[i + 1])
 
-    return ap4
+    return ap
