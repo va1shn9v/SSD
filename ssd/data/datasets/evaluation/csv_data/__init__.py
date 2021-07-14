@@ -36,8 +36,8 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
 
         # img_info = dataset.get_img_info(i)
         prediction = predictions[i]
-        print("Prediction")
-        print(prediction)
+        # print("Prediction")
+        # print(prediction)
 
         prediction = prediction.resize((img_width, img_height)).numpy()
         boxes, labels, scores = prediction['boxes'], prediction['labels'], prediction['scores']
@@ -287,12 +287,12 @@ def calc_detection_voc_prec_rec(
             pred_score_l = pred_score[pred_mask_l]
             
 
-            print("Pred_Score_L")
-            print(pred_score_l)
+            # print("Pred_Score_L")
+            # print(pred_score_l)
             # sort by score
             order = pred_score_l.argsort()[::-1]
-            print("order")
-            print(order)
+            # print("order")
+            # print(order)
             pred_bbox_l = pred_bbox_l[order]
             pred_score_l = pred_score_l[order]
 
@@ -310,10 +310,10 @@ def calc_detection_voc_prec_rec(
                 continue
 
             # VOC evaluation follows integer typed bounding boxes.
-            print("pred_bbox_l")
-            print(pred_bbox_l.shape)
-            print("gt_bbox_l")
-            print(gt_bbox_l)
+            # print("pred_bbox_l")
+            # print(pred_bbox_l.shape)
+            # print("gt_bbox_l")
+            # print(gt_bbox_l)
             pred_bbox_l = pred_bbox_l.copy()
             pred_bbox_l[:, 2:] += 1
             gt_bbox_l = gt_bbox_l.copy()
