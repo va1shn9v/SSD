@@ -6,7 +6,7 @@ MODEL:
     NAME: 'mobilenet_v3'
     OUT_CHANNELS: (112, 960, 512, 256, 256, 64)
   PRIORS:
-    FEATURE_MAPS: [6, 4, 3, 2, 2, 4]
+    FEATURE_MAPS: [6, 3, 3, 2, 2, 4]
     STRIDES: [16, 32, 64, 107, 160, 320]
     MIN_SIZES: [60, 105, 150, 195, 240, 285]
     MAX_SIZES: [105, 150, 195, 240, 285, 330]
