@@ -196,8 +196,11 @@ class CSVDataset(Dataset):
         return float(image.width) / float(image.height)
     def get_image_size(self,image_index):
         image = Image.open(self.image_names[image_index])
-        return image.width,image.height
+        return (image.width,image.height)
 
 if __name__ == "__main__":
-	cdata = CSVDataset("/Users/vaishnavp/Desktop/train.csv")
-	print(cdata.__getitem__(7))
+    cdata = CSVDataset("/Users/vaishnavp/Desktop/train.csv")
+    print(cdata.__getitem__(7))
+    img_w,img_h = cdata.get_image_size(7)
+    print(img_w)
+    print(img_h)
