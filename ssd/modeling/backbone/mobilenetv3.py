@@ -185,19 +185,23 @@ class MobileNetV3(nn.Module):
 
     def forward(self, x):
         features = []
+        feature_shapes = []
         for i in range(13):
             x = self.features[i](x)
         features.append(x)
+        feature_shapes.append(x.shape)
 
         for i in range(13, len(self.features)):
             x = self.features[i](x)
         features.append(x)
+        feature_shapes.append(x.shape)
 
         for i in range(len(self.extras)):
             x = self.extras[i](x)
             features.append(x)
+            feature_shapes.append(x.shape)
         print("Features")
-        print(features)
+        print(feature_shapes)
 
         return tuple(features)
 
