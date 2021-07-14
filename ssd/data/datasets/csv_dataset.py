@@ -194,6 +194,9 @@ class CSVDataset(Dataset):
     def image_aspect_ratio(self, image_index):
         image = Image.open(self.image_names[image_index])
         return float(image.width) / float(image.height)
+    def get_image_size(self,image_index):
+        image = Image.open(self.image_names[image_index])
+        return image.width,image.height
 
 if __name__ == "__main__":
 	cdata = CSVDataset("/Users/vaishnavp/Desktop/train.csv")

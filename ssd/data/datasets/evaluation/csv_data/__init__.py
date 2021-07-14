@@ -24,6 +24,8 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
 
     for i in range(len(dataset)):
         annotation, labels = dataset.load_annotations(i)
+        img_width,img,height = dataset.get_img_size(i)
+        print("Image shape is :{}, {}".format(img_width,img_height))
         # gt_boxes, gt_labels, is_difficult = annotation
         gt_boxes_list.append(annotation)
         gt_labels_list.append(labels)
@@ -33,7 +35,8 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
         prediction = predictions[i]
         print("Prediction")
         print(prediction)
-        # prediction = prediction.resize((img_info['width'], img_info['height'])).numpy()
+
+        prediction = prediction.resize((img_width, img_height)).numpy()
         boxes, labels, scores = prediction['boxes'], prediction['labels'], prediction['scores']
 
         pred_boxes_list.append(boxes)
@@ -270,12 +273,12 @@ def calc_detection_voc_prec_rec(
             pred_mask_l = pred_label == l
             pred_bbox_l = pred_bbox[pred_mask_l]
             pred_score_l = pred_score[pred_mask_l]
-            pred_score_l = pred_score_l
+            
 
             print("Pred_Score_L")
             print(pred_score_l)
             # sort by score
-            order = torch.flip(pred_score_l.argsort(),(0,))
+            order = pred_score_l.argsort()[::-1]
             print("order")
             print(order)
             pred_bbox_l = pred_bbox_l[order]
