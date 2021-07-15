@@ -66,7 +66,7 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
     result_str = "mAP: {:.4f}\n".format(result["map"])
     print(np.mean(result["presicion"][1]))
     print(np.mean(result["recall"][1]))
-    metrics = {'mAP': result["map"]}
+    metrics = {'mAP': result["map"],'presicion':np.mean(result["presicion"][1]),'recall':np.mean(result["recall"][1])}
     for i, ap in enumerate(result["ap"]):
         if i == 0:  # skip background
             continue
@@ -82,6 +82,8 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
         f.write(result_str)
     with open("image2products.json","w") as j:
         json.dump(image_to_box,j)
+    with open("metrics.json","w") as m:
+        json.dump(metrics,m)
 
 
     return dict(metrics=metrics)
