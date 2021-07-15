@@ -44,7 +44,7 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
         
         sc = scores > 0.2
         sc_total = sc.sum()
-        image_to_box[str(os.path.basename(img_name))] = sc_total
+        image_to_box[str(os.path.basename(img_name))] = int(sc_total)
         boxes = boxes[sc]
         labels = labels[sc]
         scores = scores[sc]
