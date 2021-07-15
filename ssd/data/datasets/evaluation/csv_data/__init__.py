@@ -64,8 +64,8 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
                                 use_07_metric=True)
     logger = logging.getLogger("SSD.inference")
     result_str = "mAP: {:.4f}\n".format(result["map"])
-    print(result["presicion"])
-    print(result["recall"])
+    print(np.mean(result["presicion"][1]))
+    print(np.mean(result["recall"][1]))
     metrics = {'mAP': result["map"]}
     for i, ap in enumerate(result["ap"]):
         if i == 0:  # skip background
