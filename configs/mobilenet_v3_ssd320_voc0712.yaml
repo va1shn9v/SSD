@@ -6,12 +6,12 @@ MODEL:
     NAME: 'mobilenet_v3'
     OUT_CHANNELS: (112, 960, 512, 256, 256, 64)
   PRIORS:
-    FEATURE_MAPS: [5, 3, 3, 2, 2, 4]
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
     STRIDES: [16, 32, 64, 107, 160, 320]
     MIN_SIZES: [60, 105, 150, 195, 240, 285]
     MAX_SIZES: [105, 150, 195, 240, 285, 330]
     ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
-    BOXES_PER_LOCATION: [1, 1, 1, 1, 1, 1]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
 INPUT:
   IMAGE_SIZE: 320
 DATASETS:
@@ -22,6 +22,6 @@ SOLVER:
   LR_STEPS: [1000, 2000]
   GAMMA: 0.1
   BATCH_SIZE: 32
-  LR: 1e-3
+  LR: 1e-4
 
 OUTPUT_DIR: 'outputs/mobilenet_v3_ssd320_voc0712'
