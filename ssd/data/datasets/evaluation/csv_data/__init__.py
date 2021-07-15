@@ -200,7 +200,7 @@ def eval_detection_voc(
 
     ap = calc_detection_voc_ap(prec, rec, use_07_metric=use_07_metric)
 
-    return {'ap': ap, 'map': np.nanmean(ap),"presicion":np.mean(prec),"recall":np.mean(rec)}
+    return {'ap': ap, 'map': np.nanmean(ap),"presicion":prec,"recall":rec}
 
 
 def calc_detection_voc_prec_rec(
