@@ -41,7 +41,7 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
 
         prediction = prediction.resize((img_width, img_height)).numpy()
         boxes, labels, scores = prediction['boxes'], prediction['labels'], prediction['scores']
-        image_to_box[str(img_name)] = len(boxes)
+        image_to_box[str(os.path.basename(img_name))] = sc_total
         sc = scores > 0.2
         sc_total = sc.sum()
         boxes = boxes[sc]
