@@ -28,7 +28,7 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
         annotation, labels = dataset.load_annotations(i)
         img_width,img_height = dataset.get_image_size(i)
         img_name = dataset.get_image_name(i)
-        print("Image shape is :{}, {}".format(img_width,img_height))
+        # print("Image shape is :{}, {}".format(img_width,img_height))
         # gt_boxes, gt_labels, is_difficult = annotation
         gt_boxes_list.append(annotation)
         gt_labels_list.append(labels)
@@ -47,9 +47,7 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
         boxes = boxes[sc]
         labels = labels[sc]
         scores = scores[sc]
-        print("Prediction")
-        print(boxes.shape)
-        print("Greater than scores : {} , and gt obs : {}".format(sc_total,annotation.shape))
+
 
         pred_boxes_list.append(boxes)
         pred_labels_list.append(labels)
@@ -64,8 +62,8 @@ def csv_evaluation(dataset, predictions, output_dir, iteration=None):
                                 use_07_metric=True)
     logger = logging.getLogger("SSD.inference")
     result_str = "mAP: {:.4f}\n".format(result["map"])
-    print(np.mean(result["presicion"][1]))
-    print(np.mean(result["recall"][1]))
+    # print(np.mean(result["presicion"][1]))
+    # print(np.mean(result["recall"][1]))
     metrics = {'mAP': result["map"],'presicion':np.mean(result["presicion"][1]),'recall':np.mean(result["recall"][1])}
     for i, ap in enumerate(result["ap"]):
         if i == 0:  # skip background
@@ -364,17 +362,17 @@ def calc_detection_voc_prec_rec(
 
         order = score_l.argsort()[::-1]
         match_l = match_l[order]
-        print("Match_L")
-        print(match_l.shape)
+        # print("Match_L")
+        # print(match_l.shape)
 
         tp = np.cumsum(match_l == 1)
         fp = np.cumsum(match_l == 0)
-        print("Total objects in : {}".format(tp+fp))
-        print(type(tp))
-        print("TP : {}".format(tp))
-        print(tp.shape)
-        print("FP : {}".format(fp))
-        print(fp.shape)
+        # print("Total objects in : {}".format(tp+fp))
+        # print(type(tp))
+        # print("TP : {}".format(tp))
+        # print(tp.shape)
+        # print("FP : {}".format(fp))
+        # print(fp.shape)
         # If an element of fp + tp is 0,
         # the corresponding element of prec[l] is nan.
         prec[l] = tp / (fp + tp)
